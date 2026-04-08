@@ -1,37 +1,21 @@
 'use client';
 import { motion } from 'framer-motion';
-
-const education = [
-  {
-    title: "Ingénieur Cybersécurité, Spécialisation Pentest & Architecture Réseau",
-    institution: "IPSSI Nice",
-    date: "2023 - Present",
-    details: [
-      "SecNumEdu certified by ANSSI."
-    ],
-  },
-  {
-    title: "Bachelor Administrateur d'Infrastructures Sécurisées",
-    institution: "IPSSI Nice",
-    date: "2022 - 2023",
-    details: [
-      "Certification CCNA Cisco."
-    ],
-  },
-];
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Education() {
+  const { t } = useLanguage();
+
   return (
     <section id="education" className="py-24 px-6 max-w-7xl mx-auto">
       <div>
-        <span className="section-number">04 / Academic</span>
-        <h2 className="section-title">Education</h2>
+        <span className="section-number">{t.education.number}</span>
+        <h2 className="section-title">{t.education.title}</h2>
       </div>
       
       <div className="space-y-12 relative">
         <div className="absolute left-0 top-0 h-full w-0.5 bg-accent/30 -translate-x-1/2 hidden md:block"></div>
 
-        {education.map((edu, i) => (
+        {t.education.items.map((edu, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, x: -30 }}

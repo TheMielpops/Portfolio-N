@@ -1,54 +1,21 @@
 'use client';
 import { motion } from 'framer-motion';
-
-const experiences = [
-  {
-    role: "Formateur Architecture Réseau",
-    company: "IPSSI Nice",
-    contract: "Alternance",
-    date: "2023 - Present",
-    details: [
-      "Conception et maintenance d'infrastructures réseau complexes.",
-      "Mise en place de solutions de routage et commutation avancées.",
-      "Formateur référent sur les technologies Cisco (VLANs, routage inter-VLAN).",
-      "Virtualisation Proxmox et gestion de clusters haute disponibilité."
-    ],
-  },
-  {
-    role: "Administrateur Système et Réseau",
-    company: "IPSSI Nice",
-    contract: "Alternance",
-    date: "2022 - 2023",
-    details: [
-      "Gestion d'un parc informatique d'une centaine de postes.",
-      "Administration Windows Server (Active Directory, GPOs).",
-      "Déploiement d'une infrastructure web haute disponibilité avec Nginx Load Balancer."
-    ],
-  },
-  {
-    role: "Stagiaire SysAdmin / Cybersécurité",
-    company: "Confidential - Defense Industry",
-    contract: "Stage",
-    date: "2022",
-    details: [
-      "Hardening de serveurs Linux (WAF, VPN, pare-feu).",
-      "Tests de pénétration et audit de sécurité des infrastructures."
-    ],
-  },
-];
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Experience() {
+  const { t } = useLanguage();
+
   return (
     <section id="experience" className="py-24 px-6 max-w-7xl mx-auto">
       <div>
-        <span className="section-number">02 / Professional</span>
-        <h2 className="section-title">Experience</h2>
+        <span className="section-number">{t.experience.number}</span>
+        <h2 className="section-title">{t.experience.title}</h2>
       </div>
       
       <div className="space-y-12 relative">
         <div className="absolute left-0 top-0 h-full w-0.5 bg-accent/30 -translate-x-1/2 hidden md:block"></div>
 
-        {experiences.map((exp, i) => (
+        {t.experience.items.map((exp, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, x: -30 }}

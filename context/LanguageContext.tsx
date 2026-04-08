@@ -18,7 +18,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   };
 
   // 't' contient toutes les phrases de la langue actuellement sélectionnée
-  const t = translations[lang];
+  const t = translations[lang] as typeof translations.en;
 
   return (
     <LanguageContext.Provider value={{ lang, toggleLang, t }}>

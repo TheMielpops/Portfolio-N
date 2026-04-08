@@ -1,6 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import Platforms from '@/components/Platforms'; 
+import Platforms from '@/components/Platforms';
 import CTFRecord from '@/components/CTFRecord';
 import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
@@ -13,15 +13,16 @@ export default function Home() {
       <Navbar />
 
       <Hero />
-      <Platforms /> 
+      <Platforms />
       <CTFRecord />
       <Experience />
       <Projects />
       <Education />
       <Contact />
 
-      <footer className="py-12 mt-10 text-center font-mono text-[10px] text-gray-600 uppercase tracking-widest border-t border-[var(--color-border)] px-6">
-        Noah Dauge // Cybersecurity Engineer // 2026
+      {/* Footer ultra-discret (fantôme) */}
+      <footer className="py-8 pb-12 text-center font-mono text-[9px] text-white/10 uppercase tracking-[0.3em] px-6 select-none cursor-default">
+        0xNoah // Cybersécurity and Pentester student // 2026
       </footer>
     </main>
   );
