@@ -12,7 +12,7 @@ export const translations = {
       subtitle: "Portfolio // Noah Dauge // 2026",
       title1: "0xNoah",
       title2: "Offensive Security",
-      desc: "Cybersecurity and penetration testing student. I'm passionate about cybersecurity, and I practice using personal labs as well as platforms like Hack The Box, TryHackMe, and Root Me.",
+      desc: "Cybersecurity and penetration testing student. I'm passionate about cybersecurity, and I practice using personal labs as well as platforms like TryHackMe, Hack The Box.",
       btnWork: "Explore Work",
       btnContact: "Get in touch",
       stats: {
@@ -33,15 +33,18 @@ export const translations = {
       title: "Experience",
       items: [
         {
-          role: "Web & Cloud Developer",
+          role: "Cybersecurity Auditor",
           company: "KH Motors",
           contract: "Internship",
           date: "May 2025 - July 2025",
           details: [
-            "Deployment of a high-availability web infrastructure with Nginx Load Balancer.",
-            "Development of secure websites with advanced features.",
-            "Lead instructor for Cisco technologies (VLANs, inter-VLAN routing).",
-            "Proxmox virtualization and high-availability cluster management."
+            "Conducting application security audits (OWASP Top 10).",
+            "Analysis of common vulnerabilities: XSS, SQL injections, CSRF, authentication flaws.",
+            "Penetration testing (pentesting). Proficiency in tools: Burp Suite, OWASP ZAP, Nmap, Screaming Frog",
+            "Detection and exploitation of vulnerabilities via targeted penetration tests.",
+            "Knowledge of standards: GDPR (data protection), CSP, HSTS, OWASP ASVS.",
+            "Drafting clear audit reports with risk classification.",
+            "Proposing technical and corrective measures & applying fixes after validation.",
           ]
         },
         {
@@ -206,16 +209,17 @@ export const translations = {
         {
           title: "Bachelor 3 Network and Cybersecurity Administrator",
           institution: "IPSSI Nice",
-          date: "2023 - Present",
+          date: "2025 - Present",
           details: [
             "Secured Infrastructure Administrator (AIS) Degree.",
-            "Pre security (SEC0) TryHackMe Certification."
+            "Pre security (SEC0) TryHackMe Certification.",
+            "Cybersécurity 101 (SEC1) TryHackMe Certification."
           ]
         },
         {
           title: "Prepa B1 & B2, IT & Development",
           institution: "IPSSI Nice",
-          date: "2022 - 2023",
+          date: "2022 - 2024",
           details: [
             "Prepa B1 & B2 IT, Cybersecurity, Networks, FullStack Dev.",
             "Cisco CCNA Certification."
@@ -253,7 +257,7 @@ export const translations = {
       subtitle: "Portfolio // Noah Dauge // 2026",
       title1: "0xNoah",
       title2: "Sécurité Offensive",
-      desc: "Étudiant en cybersécurité et test d'intrusion. Passionné par la sécurité, je m'entraîne sur des laboratoires personnels ainsi que sur des plateformes comme Hack The Box, TryHackMe et Root Me.",
+      desc: "Étudiant en cybersécurité et test d'intrusion. Passionné par la sécurité, je m'entraîne sur des laboratoires personnels ainsi que sur des plateformes comme TryHackMe, Hack The Box.",
       btnWork: "Voir les projets",
       btnContact: "Me contacter",
       stats: {
@@ -274,15 +278,18 @@ export const translations = {
       title: "Expériences",
       items: [
         {
-          role: "Développeur Web & Cloud",
+          role: "Auditeur cybersécurité",
           company: "KH Motors",
           contract: "Stage",
           date: "Mai 2025 - Juillet 2025",
           details: [
-            "Déploiement d'une infrastructure web haute disponibilité avec Nginx Load Balancer.",
-            "Développement de sites web sécurisés avec des fonctionnalités avancées.",
-            "Formateur référent sur les technologies Cisco (VLANs, routage inter-VLAN).",
-            "Virtualisation Proxmox et gestion de clusters haute disponibilité."
+            "Réalisation d’audits de sécurité applicatifs (OWASP Top 10).",
+            "Analyse des vulnérabilités courantes : XSS, injections SQL, CSRF, failles d’authentification.",
+            "Tests d’intrusion (pentesting) Maîtrise des outils : Burp Suite, OWASP ZAP, Nmap, Screaming Frog",
+            "Détection et exploitation de vulnérabilités via tests d’intrusion ciblés.",
+            "Connaissance des standards : RGPD (protection des données), CSP, HSTS, OWASP ASVS.",
+            "Rédaction de rapports d’audit clairs avec classification des risques.",
+            "Proposition de contremesures techniques et correctives & applications des correctives après validation."
           ]
         },
         {
@@ -447,16 +454,17 @@ export const translations = {
         {
           title: "Bachelor 3 Administrateur Réseaux et Cybersécurité",
           institution: "IPSSI Nice",
-          date: "2023 - Présent",
+          date: "2025 - Présent",
           details: [
             "Diplôme Administrateur d’infrastructures sécurisées (AIS).",
-            "Certification Pre security (SEC0) TryHackMe."
+            "Certification Pre security (SEC0) TryHackMe.",
+            "Certification Cybersécurity 101 (SEC1) TryHackMe."
           ]
         },
         {
           title: "Prépa B1 & B2, Informatique & Développement",
           institution: "IPSSI Nice",
-          date: "2022 - 2023",
+          date: "2022 - 2024",
           details: [
             "Prépa B1 & B2 Informatique, Cybersécurité, Réseaux, Dev FullStack.",
             "Certification CCNA Cisco."

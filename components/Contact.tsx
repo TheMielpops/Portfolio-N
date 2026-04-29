@@ -1,4 +1,5 @@
 'use client';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -12,7 +13,39 @@ const YWHIcon = () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none
 const SendIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>;
 
 export default function Contact() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      // REMPLACE "TON_ID_FORMSPREE_ICI" PAR L'ID FOURNI PAR FORMSPREE (ex: xabcdefg)
+      const response = await fetch("https://formspree.io/f/xdabnzgr", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        (e.target as HTMLFormElement).reset(); // On vide le formulaire
+        setTimeout(() => setStatus('idle'), 5000); // Remet le bouton à l'état initial après 5s
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 5000);
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
+  };
 
   return (
     <section id="contact" className="py-24 px-6 max-w-7xl mx-auto pb-40">
@@ -61,29 +94,36 @@ export default function Contact() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+          <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-2">
               <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">{t.contact.form.name} <span className="text-accent">*</span></label>
-              <input type="text" placeholder={t.contact.form.placeholderName} className="w-full bg-white/[0.02] border border-white/5 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-gray-500 transition-colors placeholder:text-gray-700" required />
+              <input type="text" name="name" placeholder={t.contact.form.placeholderName} className="w-full bg-white/[0.02] border border-white/5 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-gray-500 transition-colors placeholder:text-gray-700" required />
             </div>
 
             <div className="flex flex-col gap-2">
               <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">{t.contact.form.email}</label>
-              <input type="email" placeholder="you@example.com" className="w-full bg-white/[0.02] border border-white/5 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-gray-500 transition-colors placeholder:text-gray-700" />
+              <input type="email" name="email" placeholder="you@example.com" className="w-full bg-white/[0.02] border border-white/5 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-gray-500 transition-colors placeholder:text-gray-700" />
             </div>
 
             <div className="flex flex-col gap-2">
               <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">{t.contact.form.subject} <span className="text-accent">*</span></label>
-              <input type="text" placeholder={t.contact.form.placeholderSubject} className="w-full bg-white/[0.02] border border-white/5 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-gray-500 transition-colors placeholder:text-gray-700" required />
+              <input type="text" name="subject" placeholder={t.contact.form.placeholderSubject} className="w-full bg-white/[0.02] border border-white/5 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-gray-500 transition-colors placeholder:text-gray-700" required />
             </div>
 
             <div className="flex flex-col gap-2 mb-4">
               <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">{t.contact.form.message} <span className="text-accent">*</span></label>
-              <textarea placeholder={t.contact.form.placeholderMessage} rows={5} className="w-full bg-white/[0.02] border border-white/5 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-gray-500 transition-colors placeholder:text-gray-700 resize-none" required></textarea>
+              <textarea name="message" placeholder={t.contact.form.placeholderMessage} rows={5} className="w-full bg-white/[0.02] border border-white/5 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-gray-500 transition-colors placeholder:text-gray-700 resize-none" required></textarea>
             </div>
 
-            <button type="submit" className="w-full bg-accent hover:bg-red-700 text-white font-bold text-xs tracking-widest uppercase py-4 rounded-lg flex items-center justify-center gap-3 transition-colors">
-              <SendIcon /> {t.contact.form.send}
+            <button 
+              type="submit" 
+              disabled={status === 'loading'}
+              className="w-full bg-accent hover:bg-red-700 text-white font-bold text-xs tracking-widest uppercase py-4 rounded-lg flex items-center justify-center gap-3 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {status === 'idle' && <><SendIcon /> {t.contact.form.send}</>}
+              {status === 'loading' && (lang === 'fr' ? 'Envoi en cours...' : 'Sending...')}
+              {status === 'success' && (lang === 'fr' ? 'Message envoyé !' : 'Message sent!')}
+              {status === 'error' && (lang === 'fr' ? 'Erreur d\'envoi' : 'Error sending')}
             </button>
           </form>
         </motion.div>

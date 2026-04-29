@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 
 const platforms = [
   { name: "HackTheBox", stat: "Pro Hacker", color: "text-[#9fef00]" },
-  { name: "TryHackMe", stat: "Top 20%", color: "text-[#ffffff]" },
-  { name: "Root-Me", stat: "Top 15%", color: "text-[#d18e1e]" },
+  { name: "TryHackMe", stat: "Top 7%", color: "text-[#ffffff]" },
+  { name: "Root-Me", stat: "unknown", color: "text-[#d18e1e]" },
   { name: "YesWeHack", stat: "Hunter", color: "text-[#0051ff]" }
 ];
 
